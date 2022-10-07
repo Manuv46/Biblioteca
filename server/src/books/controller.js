@@ -8,6 +8,14 @@ const getBooks = (req, res) => {
     });
 };
 
+const getBooksRent = (req, res) => {
+    pool.query(queries.getBooksRent, (error, results) => {
+        if (error) throw error;
+        res.status(200).json(results.rows);
+    });
+};
+
 module.exports = {
     getBooks,
+    getBooksRent
 };
