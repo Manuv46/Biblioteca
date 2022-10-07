@@ -1,6 +1,6 @@
 const getBooks = "SELECT * FROM books";
 
-const getBooksRent = `SELECT 
+const getRentedBooks = `SELECT 
                             books.isbn, 
                             books.title,
                             books.author,
@@ -13,7 +13,17 @@ const getBooksRent = `SELECT
                       JOIN rental ON books.isbn = rental.isbn
                       JOIN users ON rental.users_id = users.users_id `;
 
+const getAvailableBooks = `SELECT 
+                            books.isbn, 
+                            books.title,
+                            books.author,
+                            books.year_publication
+                           FROM books 
+                           LEFT JOIN rental ON books.isbn = rental.isbn
+                           WHERE NOT EXISTS ( SELECT rental.isbn FROM rental WHERE books.isbn = rental.isbn)`;
+
 module.exports = {
     getBooks,
-    getBooksRent,
+    getRentedBooks,
+    getAvailableBooks,
 };
