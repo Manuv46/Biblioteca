@@ -8,13 +8,37 @@ const getRentals = (req, res) => {
     });
 };
 
+const addRental = (req, res) => {
+    const { users_id, isbn } = req.body;
+    pool.query(queries.getRentalById, [users_id], (error, results) => {
+        if (results.rows.length != 0) {
+            res.status(403).send("The user already has a book on loan!")
+        }
+        else {
+            pool.query(queries.getRentalByISBN, [isbn], (error, results2) => {
+                if (results2.rows.length != 0) {
+                    res.status(403).send("Book already on loan!")
+                }
+                else {
+                    pool.query(queries.addRental, [users_id, isbn], (error, results3) => {
+                        if (error) {
+                            res.status(400).send("User_Id or Book ISBN not exist!")
+                        } else {
+                            res.status(201).send("Rental success!!")
+                        }
+                    });
+                }
+            });
+        }
+    });
+};
 
 const removeRentedBook = (req, res) => {
     const { users_id, isbn } = req.body;
-    pool.query(queries.getRental, [users_id, isbn], (error, results) => {
+    pool.query(queries.getRentalByIdAndISBN, [users_id, isbn], (error, results) => {
         const noRentalFound = !results.rows.length;
         if (noRentalFound) {
-            res.send("The user or the book does not have a rental");
+            res.status(404).send("The user or the book does not have a rental.");
         }
         else {
             pool.query(queries.removeRental, [users_id, isbn], (error, results) => {
@@ -27,5 +51,6 @@ const removeRentedBook = (req, res) => {
 
 module.exports = {
     getRentals,
+    addRental,
     removeRentedBook
 };
