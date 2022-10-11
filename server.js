@@ -1,9 +1,11 @@
 const express = require('express');
+const dotenv = require('dotenv')
+dotenv.config()
 const booksRoutes = require("./src/books/routes");
 const rentalRoutes = require("./src/rental/routes");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORTSERVER;
 
 app.use(express.json());
 app.use("/api/books", booksRoutes);
