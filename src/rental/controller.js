@@ -1,4 +1,4 @@
-const pool = require('../../db');
+const pool = require('../../database/db');
 const queries = require('./queries');
 
 const getRentals = (req, res) => {
