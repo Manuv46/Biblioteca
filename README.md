@@ -12,10 +12,10 @@ The reference address it's `localhost:3000/api/`
 
 ## API BOOKS
 
-- `localhost:3000/api/books` to see info of all books
-- `localhost:3000/api/books/rented` to see info of all rented books and the user that take the book
-- `localhost:3000/api/books/available` to see info of all available books
-- `localhost:3000/api/books/:id` to see info of a single book
+- `localhost:3000/api/books` to see info of all books;
+- `localhost:3000/api/books/rented` to see info of all rented books and the user that take the book;
+- `localhost:3000/api/books/available` to see info of all available books;
+- `localhost:3000/api/books/:id` to see info of a single book, substitute :id with the isbn of the book;
 - `localhost:3000/api/books/newbook` to add a new book, for that u have to add info in the request body as in the example:
    
    ``` 
@@ -36,7 +36,7 @@ The reference address it's `localhost:3000/api/`
    
    
 ## API RENTAL
-- `localhost:3000/api/rental` to see info of all renatls
+- `localhost:3000/api/rental` to see info of all renatls;
 
 - `localhost:3000/api/newrental` to add a new rental add on the body add:
    ```
@@ -54,8 +54,8 @@ The reference address it's `localhost:3000/api/`
     ```
 
 ## API USER
-- `localhost:3000/api/user` to see info of all users
-- `localhost:3000/api/user/:id` to see if of a user
+- `localhost:3000/api/user` to see info of all users;
+- `localhost:3000/api/user/:id` to see if of a user, substitute :id with the id of the user;
 - `localhost:3000/api/newuser` to add a new user and on the body add: 
    
    ```
