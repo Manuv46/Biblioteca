@@ -1,8 +1,11 @@
 DROP DATABASE IF EXISTS Library;
 
+DROP TABLE IF EXISTS rental;
+DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS users;
+
 CREATE DATABASE Library
     
-DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	users_id serial PRIMARY KEY,
 	first_name VARCHAR ( 50 ) NOT NULL,
@@ -11,7 +14,7 @@ CREATE TABLE users (
 	registration_date TIMESTAMP NOT NULL
 );
 
-DROP TABLE IF EXISTS books;
+
 CREATE TABLE books (
 	isbn BIGINT PRIMARY KEY,
 	title VARCHAR ( 50 ) NOT NULL,
@@ -19,7 +22,7 @@ CREATE TABLE books (
 	year_publication DATE NOT NULL
 );
 
-DROP TABLE IF EXISTS rental;
+
 CREATE TABLE rental (
 	users_id serial NOT NULL,
 	isbn BIGINT NOT NULL,
