@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS Library;
+
+CREATE DATABASE Library
+    
+DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	users_id serial PRIMARY KEY,
 	first_name VARCHAR ( 50 ) NOT NULL,
@@ -6,6 +11,7 @@ CREATE TABLE users (
 	registration_date TIMESTAMP NOT NULL
 );
 
+DROP TABLE IF EXISTS books;
 CREATE TABLE books (
 	isbn BIGINT PRIMARY KEY,
 	title VARCHAR ( 50 ) NOT NULL,
@@ -13,7 +19,7 @@ CREATE TABLE books (
 	year_publication DATE NOT NULL
 );
 
-
+DROP TABLE IF EXISTS rental;
 CREATE TABLE rental (
 	users_id serial NOT NULL,
 	isbn BIGINT NOT NULL,
@@ -28,7 +34,7 @@ CREATE TABLE rental (
 INSERT INTO users (first_name,username,email,registration_date) VALUES 
 	('Gino', 'Gino88', 'gino@gmail.com', CURRENT_TIMESTAMP),
 	('Giuseppe', 'Beppe', 'beppe@gmail.com', CURRENT_TIMESTAMP),
-	('Pippo', 'Pippo', 'pippo@gmail.com', CURRENT_TIMESTAMP);
+	('Pippo', 'Pippo', 'pippo@gmail.com', CURRENT_TIMESTAMP),
     ('Franchino', 'Franco', 'franco@gmail.com', CURRENT_TIMESTAMP);
 	
 
